@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/ranking"
+            android:title="RANKING"/>
+        <item
+            android:id="@+id/scoreedit"
+            android:title="SCORE EDIT"/>
+        <item
+            android:id="@+id/gamemanagement"
+            android:title="GAME MANAGIMENT"/>
+        <item
+            android:id="@+id/newplayer"
+            android:title="NEW PLAYER"/>
+    </group>
+</menu>

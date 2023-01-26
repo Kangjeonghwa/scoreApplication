@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameManagementFragment"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEW GAME"
+        android:textColor="@color/text3"
+        android:textSize="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_marginLeft="5dp"
+                android:id="@+id/gamemanagement_newgame_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="GAME NAME"
+                android:textColorHint="@color/text1"
+                android:textSize="26dp"
+                android:inputType="text"
+                android:background="@null"
+                android:textColor="@color/text1" />
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="305dp"
+                android:layout_height="2dp"
+                android:background="@color/text1"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/gamemanagement_add_btn"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/addbutton"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT GAME"
+        android:textColor="@color/text3"
+        android:textSize="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Spinner
+            android:layout_marginTop="5dp"
+            android:id="@+id/gamemanagement_game_dropdown"
+            android:background="@drawable/spinner_custom"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown" />
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="305dp"
+            android:layout_height="2dp"
+            android:background="@color/text1"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_marginLeft="5dp"
+                android:id="@+id/gamemanagement_editgame_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="EDIT GAME"
+                android:textColorHint="@color/text1"
+                android:textSize="26dp"
+                android:inputType="text"
+                android:background="@null"
+                android:textColor="@color/text1" />
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="305dp"
+                android:layout_height="2dp"
+                android:background="@color/text1"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/gamemanagement_editgame_btn"
+            android:layout_marginLeft="20dp"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:background="@drawable/checkbutton"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

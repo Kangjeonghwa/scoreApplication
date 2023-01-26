@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPlayerFragment"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLAYER INFO"
+        android:textColor="@color/text3"
+        android:textSize="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:baselineAligned="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="ID "
+            android:textSize="32dp"
+            android:textColor="@color/text1"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newplayer_id"
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="PLAYER NAME"
+            android:textColorHint="@color/text1"
+            android:textSize="26dp"
+            android:inputType="text"
+            android:background="@null"
+            android:textColor="@color/text1" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="95dp"
+        android:layout_width="280dp"
+        android:layout_height="2dp"
+        android:background="@color/text1"/>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:baselineAligned="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="AGE"
+                    android:textSize="32dp"
+                    android:textColor="@color/text1"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newplayer_age"
+                    android:layout_marginLeft="13dp"
+                    android:paddingLeft="7dp"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:hint="00"
+                    android:textColorHint="@color/text1"
+                    android:textSize="26dp"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:textColor="@color/text1" />
+            </LinearLayout>
+            <View
+                android:layout_marginLeft="75dp"
+                android:layout_width="40dp"
+                android:layout_height="2dp"
+                android:background="@color/text1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/newplayer_male_btn"
+                android:layout_width="64dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_basic"
+                android:text="MALE"
+                android:textSize="32dp"
+                android:textColor="@color/text3"
+                android:stateListAnimator="@null"
+                />
+            <View
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:background="@color/text1"
+                android:layout_width="2dp"
+                android:layout_height="26dp" />
+            <Button
+                android:id="@+id/newplayer_female_btn"
+                android:layout_width="104dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_basic"
+                android:text="FEMALE"
+                android:textSize="32dp"
+                android:textColor="@color/text1"
+                android:stateListAnimator="@null"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/newplayer_create_player_btn"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create PLAYER"
+            android:textColor="@color/text2"
+            android:textSize="32dp"
+            android:background="@drawable/button_background"
+            android:stateListAnimator="@null"/>
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
