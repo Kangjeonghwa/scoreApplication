@@ -15,6 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class MainFragment extends Fragment {
     //리사이클러 뷰
     private RecyclerView recyclerView;
@@ -43,6 +48,25 @@ public class MainFragment extends Fragment {
         //컴포넌트 초기화화
         //리사이클러 뷰
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerView);
+        //리사이클러 뷰 데이터 (임시)
+        ArrayList<ScoreItem> ScoreItems=new ArrayList<ScoreItem>();
+        ScoreItems.add(new ScoreItem("10.12","soccer","gabe","jane","3","2"));
+        ScoreItems.add(new ScoreItem("10.12","soccer","james","rop","2","2"));
+        ScoreItems.add(new ScoreItem("10.13","soccer","gabe","jennie","1","2"));
+        ScoreItems.add(new ScoreItem("10.27","baseball","gabe","lucy","3","2"));
+        ScoreItems.add(new ScoreItem("10.31","basketball","alex","jane","3","2"));
+        ScoreItems.add(new ScoreItem("11.01","rocksissorpaper","james","jane","2","2"));
+        ScoreItems.add(new ScoreItem("11.09","table tennis","cloy","anna","1","2"));
+        ScoreItems.add(new ScoreItem("12.12","baseball","jake","jane","3","2"));
+        ScoreItems.add(new ScoreItem("12.12","soccer","gabe","jane","3","2"));
+        ScoreItems.add(new ScoreItem("12.13","soccer","james","rop","2","2"));
+        ScoreItems.add(new ScoreItem("12.13","hockey","gabe","jennie","1","2"));
+        ScoreItems.add(new ScoreItem("12.27","baseball","gabe","lucy","3","2"));
+        ScoreItems.add(new ScoreItem("12.31","basketball","alex","jane","3","2"));
+        ScoreItems.add(new ScoreItem("12.01","rocksissorpaper","james","jane","2","2"));
+        ScoreItems.add(new ScoreItem("01.09","table tennis","cloy","anna","1","2"));
+        ScoreItems.add(new ScoreItem("02.12","baseball","jake","jane","3","2"));
+
 
         //버튼
         Allbtn = (Button) rootView.findViewById(R.id.main_all_btn);
@@ -51,6 +75,34 @@ public class MainFragment extends Fragment {
         Searchbtn = (Button) rootView.findViewById(R.id.search_player_btn);
         DateSortbtn = (Button) rootView.findViewById(R.id.dateSort_btn);
         GameSortbtn = (Button) rootView.findViewById(R.id.gameSort_btn);
+
+        //리사이클러 뷰 설정
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);   //getActivity 사용
+        recyclerView.setLayoutManager(layoutManager);
+
+        ScoreAdapter scoreAdapter=new ScoreAdapter(getActivity());      //getActivity 사용
+
+        //임시 data
+        /*scoreAdapter.addItem(new ScoreItem("10/12","soccer","gabe","jane","3","2"));
+        scoreAdapter.addItem(new ScoreItem("10/12","soccer","james","rop","2","2"));
+        scoreAdapter.addItem(new ScoreItem("10/13","soccer","gabe","jennie","1","2"));
+        scoreAdapter.addItem(new ScoreItem("10/27","baseball","gabe","lucy","3","2"));
+        scoreAdapter.addItem(new ScoreItem("10/31","basketball","alex","jane","3","2"));
+        scoreAdapter.addItem(new ScoreItem("11/1","rocksissorpaper","james","jane","2","2"));
+        scoreAdapter.addItem(new ScoreItem("11/9","table tennis","cloy","anna","1","2"));
+        scoreAdapter.addItem(new ScoreItem("12/12","baseball","jake","jane","3","2"));
+        scoreAdapter.addItem(new ScoreItem("12/12","soccer","gabe","jane","3","2"));
+        scoreAdapter.addItem(new ScoreItem("12/13","soccer","james","rop","2","2"));
+        scoreAdapter.addItem(new ScoreItem("12/13","hockey","gabe","jennie","1","2"));
+        scoreAdapter.addItem(new ScoreItem("12/27","baseball","gabe","lucy","3","2"));
+        scoreAdapter.addItem(new ScoreItem("12/31","basketball","alex","jane","3","2"));
+        scoreAdapter.addItem(new ScoreItem("12/1","rocksissorpaper","james","jane","2","2"));
+        scoreAdapter.addItem(new ScoreItem("1/9","table tennis","cloy","anna","1","2"));
+        scoreAdapter.addItem(new ScoreItem("2/12","baseball","jake","jane","3","2"));*/
+        scoreAdapter.addItems(ScoreItems);
+
+
+        recyclerView.setAdapter(scoreAdapter);
 
         //all,game,player 버튼 색 변경
         Allbtn.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +153,27 @@ public class MainFragment extends Fragment {
                 if(dateb==false){
                     DateSortbtn.setBackgroundResource(R.drawable.sortbutton_down);
                     dateb=true;
+
+                    Collections.sort(ScoreItems, new Comparator<ScoreItem>(){
+                        @Override
+                        public int compare(ScoreItem i1, ScoreItem i2) {
+                            int i = i1.getDate().compareTo(i2.getDate());
+                            return i;
+                        }
+                    });
+                    recyclerView.setAdapter(scoreAdapter);
+
                 }else{
                     DateSortbtn.setBackgroundResource(R.drawable.sortbutton_up);
                     dateb=false;
+                    Collections.sort(ScoreItems, new Comparator<ScoreItem>(){
+                        @Override
+                        public int compare(ScoreItem i1, ScoreItem i2) {
+                            int i = i2.getDate().compareTo(i1.getDate());
+                            return i;
+                        }
+                    });
+                    recyclerView.setAdapter(scoreAdapter);
                 }
             }
         });
@@ -132,34 +202,13 @@ public class MainFragment extends Fragment {
             }
         });
 
-        //리사이클러 뷰 설정
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);   //getActivity 사용
-        recyclerView.setLayoutManager(layoutManager);
 
-        ScoreAdapter scoreAdapter=new ScoreAdapter(getActivity());      //getActivity 사용
 
-        //임시 data
-        scoreAdapter.addItem(new ScoreItem("10/12","soccer","gabe","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/12","soccer","james","rop","2","2"));
-        scoreAdapter.addItem(new ScoreItem("10/13","soccer","gabe","jennie","1","2"));
-        scoreAdapter.addItem(new ScoreItem("10/27","baseball","gabe","lucy","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/31","basketball","alex","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("11/1","rocksissorpaper","james","jane","2","2"));
-        scoreAdapter.addItem(new ScoreItem("11/9","table tennis","cloy","anna","1","2"));
-        scoreAdapter.addItem(new ScoreItem("12/12","baseball","jake","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/12","soccer","gabe","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/12","soccer","james","rop","2","2"));
-        scoreAdapter.addItem(new ScoreItem("10/13","soccer","gabe","jennie","1","2"));
-        scoreAdapter.addItem(new ScoreItem("10/27","baseball","gabe","lucy","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/31","basketball","alex","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("11/1","rocksissorpaper","james","jane","2","2"));
-        scoreAdapter.addItem(new ScoreItem("11/9","table tennis","cloy","anna","1","2"));
-        scoreAdapter.addItem(new ScoreItem("12/12","baseball","jake","jane","3","2"));
-
-        recyclerView.setAdapter(scoreAdapter);
         
         
         return rootView;
     }
+
+
 
 }
