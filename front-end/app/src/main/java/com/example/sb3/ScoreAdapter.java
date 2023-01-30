@@ -8,17 +8,20 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> {
     Context context;
 
     ArrayList<ScoreItem> items=new ArrayList<ScoreItem>();
+    //ArrayList<ScoreItem> filteredItems=new ArrayList<ScoreItem>();
 
     public ScoreAdapter(Context context){
         this.context=context;
@@ -105,5 +108,65 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> 
         }
     }
 
+   /* 왜 안될까....
+   public Filter getFilterGame(){
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String gameStr=charSequence.toString().toLowerCase(Locale.ROOT);
+                if(gameStr.isEmpty()){
+                    filteredItems=items;
+                }else {
+                    ArrayList<ScoreItem> filteringItems=new ArrayList<ScoreItem>();
+                    for(ScoreItem item:items){
+                        if(item.getGame().toLowerCase(Locale.ROOT).contains(gameStr)){
+                            filteringItems.add(item);
+                        }
+                    }
+                    filteredItems=filteringItems;
+                }
+                FilterResults filterResults= new FilterResults();
+                filterResults.values=filteredItems;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredItems=(ArrayList<ScoreItem>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    public Filter getFilterPlayer(){
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String playerStr=charSequence.toString();
+                if(playerStr.isEmpty()){
+                    filteredItems=items;
+                }else {
+                    ArrayList<ScoreItem> filteringItems=new ArrayList<ScoreItem>();
+                    for(ScoreItem item:items){
+                        if(item.getPlayer1().toLowerCase().contains(playerStr.toLowerCase())){
+                            filteringItems.add(item);
+                        }else if(item.getPlayer2().toLowerCase().contains(playerStr.toLowerCase())){
+                            filteringItems.add(item);
+                        }
+                    }
+                    filteredItems=filteringItems;
+                }
+                FilterResults filterResults= new FilterResults();
+                filterResults.values=filteredItems;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredItems=(ArrayList<ScoreItem>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }*/
 
 }
