@@ -50,7 +50,7 @@ public class MainFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView=(ViewGroup) inflater.inflate(R.layout.main_fragment, container,false);
 
-        //컴포넌트 초기화화
+        //컴포넌트 초기화
         //리사이클러 뷰
         recyclerView = (RecyclerView) rootView.findViewById(R.id.main_recyclerView);
         //리사이클러 뷰 데이터 (임시)
@@ -86,27 +86,9 @@ public class MainFragment extends Fragment{
 
         ScoreAdapter scoreAdapter=new ScoreAdapter(getActivity());      //getActivity 사용
 
-        //임시 data
-        /*scoreAdapter.addItem(new ScoreItem("10/12","soccer","gabe","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/12","soccer","james","rop","2","2"));
-        scoreAdapter.addItem(new ScoreItem("10/13","soccer","gabe","jennie","1","2"));
-        scoreAdapter.addItem(new ScoreItem("10/27","baseball","gabe","lucy","3","2"));
-        scoreAdapter.addItem(new ScoreItem("10/31","basketball","alex","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("11/1","rocksissorpaper","james","jane","2","2"));
-        scoreAdapter.addItem(new ScoreItem("11/9","table tennis","cloy","anna","1","2"));
-        scoreAdapter.addItem(new ScoreItem("12/12","baseball","jake","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("12/12","soccer","gabe","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("12/13","soccer","james","rop","2","2"));
-        scoreAdapter.addItem(new ScoreItem("12/13","hockey","gabe","jennie","1","2"));
-        scoreAdapter.addItem(new ScoreItem("12/27","baseball","gabe","lucy","3","2"));
-        scoreAdapter.addItem(new ScoreItem("12/31","basketball","alex","jane","3","2"));
-        scoreAdapter.addItem(new ScoreItem("12/1","rocksissorpaper","james","jane","2","2"));
-        scoreAdapter.addItem(new ScoreItem("1/9","table tennis","cloy","anna","1","2"));
-        scoreAdapter.addItem(new ScoreItem("2/12","baseball","jake","jane","3","2"));*/
         scoreAdapter.addItems(ScoreItems);
-
-
         recyclerView.setAdapter(scoreAdapter);
+
 
         //all,game,player 버튼 색 변경
         Allbtn.setOnClickListener(new View.OnClickListener() {

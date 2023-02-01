@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /*
  * A simple {@link Fragment} subclass.
  * Use the {@link Ranking2Fragment#newInstance} factory method to
@@ -29,11 +31,13 @@ public class Ranking2Fragment extends Fragment {
 
     //리사이클러 뷰
     private RecyclerView rankingrecyclerView;
+    ArrayList<RankingItem> RankingItems=new ArrayList<RankingItem>();
 
     //스피너
     private Spinner gameSpinner;
     private ArrayAdapter<String> gameSpinnerAdapter;
     private String selectedGame;
+    private ArrayList<RankingItem> spinnerFilteritems=new ArrayList<RankingItem>();
 
     //게임 스피너 임시 데이터
     private static String[] items=new String[]{"SOCCER","TENNIS", "TABLE TENNIS", "BASEBALL", "BASKETBALL", "HOCKEY","VOLLEYBALL"};
@@ -56,6 +60,32 @@ public class Ranking2Fragment extends Fragment {
         rankAllBtn=(Button) rankingView.findViewById(R.id.ranking2_all_btn);
         rankGameBtn=(Button) rankingView.findViewById(R.id.ranking2_game_btn);
 
+        //리사이클러 뷰 설정
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        rankingrecyclerView.setLayoutManager(layoutManager);
+
+        RankingAdapter rankingAdapter=new RankingAdapter(getActivity());
+
+        //임시 data
+        RankingItems.add(new RankingItem("1", "125","James"));
+        RankingItems.add(new RankingItem("2", "123","jUNE"));
+        RankingItems.add(new RankingItem("3", "102","Jennie"));
+        RankingItems.add(new RankingItem("4", "99","ADAM"));
+        RankingItems.add(new RankingItem("5", "86","LISA"));
+        RankingItems.add(new RankingItem("6", "75","GABE"));
+        RankingItems.add(new RankingItem("7", "55","JANE"));
+        RankingItems.add(new RankingItem("8", "43","BILLIE"));
+        RankingItems.add(new RankingItem("9", "37","ANNA"));
+        RankingItems.add(new RankingItem("10", "22","JACK"));
+        RankingItems.add(new RankingItem("11", "20","DANIEL"));
+        RankingItems.add(new RankingItem("12", "19","DAVID"));
+        RankingItems.add(new RankingItem("13", "17","SONYA"));
+        RankingItems.add(new RankingItem("14", "16","AMY"));
+
+        rankingAdapter.addItems(RankingItems);
+
+        rankingrecyclerView.setAdapter(rankingAdapter);
+
         //게임 스피너
         gameSpinner=(Spinner) rankingView.findViewById(R.id.ranking2_game_dropdown);
         gameSpinnerAdapter =new ArrayAdapter<String>(
@@ -68,7 +98,9 @@ public class Ranking2Fragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedGame = items[i];
-                Toast.makeText(getActivity(), selectedGame, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), selectedGame, Toast.LENGTH_LONG).show();
+
+
             }
 
             @Override
@@ -107,33 +139,26 @@ public class Ranking2Fragment extends Fragment {
             }
         });
 
-        //리사이클러 뷰 설정
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        rankingrecyclerView.setLayoutManager(layoutManager);
 
-        RankingAdapter rankingAdapter=new RankingAdapter(getActivity());
-
-        //임시 data
-        rankingAdapter.addItem(new RankingItem("1", "125","James"));
-        rankingAdapter.addItem(new RankingItem("2", "123","jUNE"));
-        rankingAdapter.addItem(new RankingItem("3", "102","Jenny"));
-        rankingAdapter.addItem(new RankingItem("4", "99","ADAM"));
-        rankingAdapter.addItem(new RankingItem("5", "86","LISA"));
-        rankingAdapter.addItem(new RankingItem("6", "75","GABE"));
-        rankingAdapter.addItem(new RankingItem("7", "55","JANE"));
-        rankingAdapter.addItem(new RankingItem("8", "43","BILLIE"));
-        rankingAdapter.addItem(new RankingItem("9", "37","ANNA"));
-        rankingAdapter.addItem(new RankingItem("10", "22","JACK"));
-        rankingAdapter.addItem(new RankingItem("11", "20","DANIEL"));
-        rankingAdapter.addItem(new RankingItem("12", "19","DAVID"));
-        rankingAdapter.addItem(new RankingItem("13", "17","SONYA"));
-        rankingAdapter.addItem(new RankingItem("14", "16","AMY"));
-
-        rankingrecyclerView.setAdapter(rankingAdapter);
 
 
 
         // Inflate the layout for this fragment
         return rankingView;
+    }
+
+    //스피너 선택 게임으로 게임필터링
+    public void spinnerFilterGame(String selectedGame){
+        spinnerFilteritems.clear();
+
+        for(int i=0;i<RankingItems.size();i++){
+            if(RankingItems.get(i).getGame().toLowerCase().contains(selectedGame.toLowerCase())){
+                spinnerFilteritems.add(RankingItems.get(i));
+            }
+        }
+        RankingAdapter spinnerFilteredScoreAdapter=new RankingAdapter(getActivity());
+        spinnerFilteredScoreAdapter.addItems(spinnerFilteritems);
+        rankingrecyclerView.setAdapter(spinnerFilteredScoreAdapter);
+
     }
 }
